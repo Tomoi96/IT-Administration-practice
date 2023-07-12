@@ -4,7 +4,6 @@ $storageServers = @("StorageServer1")
 
 #Adding new server below
 $server = “StorageServer4”
-
 if ($dbServers.Contains($server)) {
     Write-Output "Database inventory contains $server"
 } 
@@ -15,18 +14,27 @@ elseif ($storageServers.Contains($server)){
   Write-Output "Storage Server inventory contains $server"
 }
 else {
-    switch ($server) {
-        {$server.Contains("Database")} {
-        $dbServers += $server
-      }
-      {$server.Contains("Web")} {
-        $webServers += $server
-      }
-       {$server.Contains("Storage")} {
-        $storageServers += $server
-      }
-      default {
-        Write-Host "Server location is not found”
-      }
-      }
+  switch ($server) {
+    {$server.Contains("Database")} {
+    $dbServers += $server
+  }
+  {$server.Contains("Web")} {
+    $webServers += $server
+  }
+   {$server.Contains("Storage")} {
+    $storageServers += $server
+  }
+  default {
+    Write-Host "Server location is not found”
+  }
+  }}
+
+foreach ($loopVariable in $dbServers) {
+  Write-Host "Database server: $loopVariable"
+}
+foreach ($loopVariable in $webServers) {
+  Write-Host "Web-Server: $loopVariable"
+}
+foreach ($loopVariable in $storageServers) {
+  Write-Host "Storage server: $loopVariable"
 }
