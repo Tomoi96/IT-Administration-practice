@@ -4,3 +4,14 @@ $storageServers = @("StorageServer1")
 
 #Adding new server below
 $server = “StorageServer4”
+
+if ($dbServers.Contains($server)) {
+    Write-Output "Database inventory contains $server"
+} 
+elseif ($webServers.Contains($server)){
+  Write-Output "Web Server inventory contains $server"
+}
+elseif ($storageServers.Contains($server)){
+  Write-Output "Storage Server inventory contains $server"
+}
+else {}
