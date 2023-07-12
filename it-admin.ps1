@@ -14,4 +14,19 @@ elseif ($webServers.Contains($server)){
 elseif ($storageServers.Contains($server)){
   Write-Output "Storage Server inventory contains $server"
 }
-else {}
+else {
+    switch ($server) {
+        {$server.Contains("Database")} {
+        $dbServers += $server
+      }
+      {$server.Contains("Web")} {
+        $webServers += $server
+      }
+       {$server.Contains("Storage")} {
+        $storageServers += $server
+      }
+      default {
+        Write-Host "Server location is not found”
+      }
+      }
+}
